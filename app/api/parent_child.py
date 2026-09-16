@@ -1,11 +1,10 @@
 from fastapi import APIRouter, Depends, HTTPException
 from sqlalchemy.orm import Session
 
-from app.core.dependencies import get_current_user, require_role
+from app.core.dependencies import require_role
 from app.db.database import get_db
 from app.models.parent_child import ParentChild
 from app.models.user import User
-
 
 router = APIRouter(
     prefix="/parent-child",

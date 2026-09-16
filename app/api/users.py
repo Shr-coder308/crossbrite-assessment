@@ -1,11 +1,10 @@
 from fastapi import APIRouter, Depends
-from sqlalchemy.orm import Session
 from pwdlib import PasswordHash
+from sqlalchemy.orm import Session
 
 from app.db.database import get_db
 from app.models.user import User
 from app.schemas.user import UserCreate, UserResponse
-
 
 router = APIRouter(prefix="/users", tags=["Users"])
 

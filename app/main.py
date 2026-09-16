@@ -5,8 +5,6 @@ from app.api.evaluations import router as evaluations_router
 from app.api.parent_child import router as parent_child_router
 from app.api.sessions import router as sessions_router
 from app.api.users import router as users_router
-from app.models import User
-
 
 app = FastAPI(
     title="Crossbrite Assessment API",

@@ -13,7 +13,6 @@ from app.schemas.evaluation import (
 )
 from app.services.evaluation_service import queue_evaluation
 
-
 router = APIRouter(
     prefix="/evaluations",
     tags=["Evaluations"],

@@ -6,7 +6,6 @@ from app.core.security import create_access_token, verify_password
 from app.db.database import get_db
 from app.models.user import User
 
-
 router = APIRouter(prefix="/auth", tags=["Authentication"])
 
 

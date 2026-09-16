@@ -5,7 +5,6 @@ from pwdlib import PasswordHash
 
 from app.core.config import settings
 
-
 password_hasher = PasswordHash.recommended()
 
 ALGORITHM = "HS256"

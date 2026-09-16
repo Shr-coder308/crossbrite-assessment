@@ -70,7 +70,7 @@ def test_parent_can_access_own_child_evaluations(client):
     evaluations = response.json()
 
     assert len(evaluations) >= 1
-    assert evaluations[0]["student_id"] == 9
+    assert evaluations[0]["student_id"] == 3
 
 
 def test_parent_cannot_trigger_evaluation(client):
@@ -86,7 +86,7 @@ def test_parent_cannot_trigger_evaluation(client):
             "Authorization": f"Bearer {token}",
         },
         json={
-            "student_id": 9,
+            "student_id": 3,
         },
     )
 

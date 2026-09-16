@@ -1,16 +1,16 @@
-import pytest
-from datetime import datetime
+from datetime import datetime, timezone
 
+import pytest
 from fastapi.testclient import TestClient
 from sqlalchemy.orm import Session
 
-from app.main import app
 from app.core.security import password_hasher
 from app.db.database import SessionLocal
-from app.models.user import User
-from app.models.session import Session as SessionModel
-from app.models.parent_child import ParentChild
+from app.main import app
 from app.models.evaluation import Evaluation
+from app.models.parent_child import ParentChild
+from app.models.session import Session as SessionModel
+from app.models.user import User
 
 
 @pytest.fixture(scope="session")
@@ -87,7 +87,15 @@ def setup_test_data():
                 teacher_id=teacher.id,
                 title="Mathematics Evaluation Session",
                 description="Grade 10 mathematics assessment",
-                scheduled_at=datetime(2026, 9, 20, 10, 0, 0),
+                scheduled_at=datetime(
+                    2026,
+                    9,
+                    20,
+                    10,
+                    0,
+                    0,
+                    tzinfo=timezone.utc,
+                ),
             )
             db.add(session)
 

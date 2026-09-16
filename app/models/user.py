@@ -27,6 +27,11 @@ class User(Base):
         default="parent"
     )
 
+    password_hash: Mapped[str] = mapped_column(
+    String(255),
+    nullable=False
+    )
+    
     is_active: Mapped[bool] = mapped_column(
         Boolean,
         default=True

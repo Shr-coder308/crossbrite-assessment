@@ -1,5 +1,6 @@
 from fastapi import APIRouter, Depends
 from sqlalchemy.orm import Session
+from pwdlib import PasswordHash
 
 from app.db.database import get_db
 from app.models.user import User
@@ -8,12 +9,17 @@ from app.schemas.user import UserCreate, UserResponse
 
 router = APIRouter(prefix="/users", tags=["Users"])
 
+password_hasher = PasswordHash.recommended()
+
 
 @router.post("/", response_model=UserResponse)
 def create_user(user: UserCreate, db: Session = Depends(get_db)):
+    password_hash = password_hasher.hash(user.password)
+
     db_user = User(
         name=user.name,
         email=user.email,
+        password_hash=password_hash,
         role=user.role
     )
 
